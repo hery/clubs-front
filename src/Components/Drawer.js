@@ -4,11 +4,12 @@ import { withStyles } from 'material-ui/styles';
 
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
+
 import SimpleCard from './Card';
+import Chips from './Chip';
 
-
-// Which part is this?
 import Toolbar from 'material-ui/Toolbar';
+import Input from 'material-ui/Input';
 
 import List from 'material-ui/List';
 
@@ -17,10 +18,8 @@ import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import KeyboardArrowRightIcon from 'material-ui-icons/KeyboardArrowRight';
-import SentimentVerySatisfiedIcon from 'material-ui-icons/SentimentVerySatisfied'
+import RadioButtonUncheckedIcon from 'material-ui-icons/RadioButtonUnchecked'
 
-// We need to build the data source
-// import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/Inbox';
 import DraftsIcon from 'material-ui-icons/Drafts';
@@ -30,9 +29,9 @@ import { grey } from 'material-ui/colors';
 // TODO: It would be nice to make this component more modular
 // i.e. separate the drawer, app bar, etc...
 
-
 const drawerWidth = 260;
 const primary = grey[900]; // #F44336
+const accent = grey[50]; // #F44336
 
 const styles = theme => ({
   root: {
@@ -56,12 +55,23 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
+  search: {
+    'backgroundColor': primary,
+    'color': accent,
+    'marginLeft': 20,
+  },
   navIconHide: {
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
-  drawerHeader: theme.mixins.toolbar,
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar
+  },
   drawerPaper: {
     width: 250,
     [theme.breakpoints.up('md')]: {
@@ -100,23 +110,45 @@ class ResponsiveDrawer extends React.Component {
 
     const drawer = (
 		<div>
-		<div className={classes.drawerHeader} />
-			<Divider />
+		<div className={classes.drawerHeader}>
+    <Typography>CLUBS: Find great yoga teachers</Typography>
+    </div>
+    <Divider />
 			<List> {/* Refactor this out */}
-
 				<ListItem button>
 					<ListItemIcon>
 					<InboxIcon />
 				</ListItemIcon>
-				<ListItemText primary="Teachers" />
+				<ListItemText primary="Featured Teachers" />
 				</ListItem>
 
-				<ListItem button>
-					<ListItemIcon>
-					<DraftsIcon />
-				</ListItemIcon>
-				<ListItemText primary="Retreats" />
-				</ListItem>
+        <ListItem button>
+          <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="New Teachers" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sign Up" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="About" />
+        </ListItem>
+
+        <ListItem button>
+          <ListItemIcon>
+          <DraftsIcon />
+        </ListItemIcon>
+        <ListItemText primary="FAQ" />
+        </ListItem>
 
 			</List>
 		</div>
@@ -127,7 +159,6 @@ class ResponsiveDrawer extends React.Component {
         <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <SentimentVerySatisfiedIcon />
               <IconButton
                 color="contrast"
                 aria-label="open drawer"
@@ -135,6 +166,19 @@ class ResponsiveDrawer extends React.Component {
                 className={classes.navIconHide}>
                 <KeyboardArrowRightIcon />
               </IconButton>
+              <Input 
+                placeholder="City"
+                inputStyle={'textAlign:center'}
+                className={classes.search}/>
+
+              <Input 
+                placeholder="Teacher"
+                className={classes.search}/>
+
+              <Input 
+                placeholder="Style"
+                className={classes.search}/>
+
             </Toolbar>
           </AppBar>
           <Hidden mdUp>
@@ -162,6 +206,7 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
           <main className={classes.content}>
+            <Chips />
             <SimpleCard />
             <SimpleCard />
             <SimpleCard />
