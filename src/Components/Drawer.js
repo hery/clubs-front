@@ -17,8 +17,8 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
-import KeyboardArrowRightIcon from 'material-ui-icons/KeyboardArrowRight';
-import RadioButtonUncheckedIcon from 'material-ui-icons/RadioButtonUnchecked'
+import MenuIcon from 'material-ui-icons/Menu';
+import SearchIcon from 'material-ui-icons/Search'
 
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/Inbox';
@@ -30,7 +30,6 @@ import { grey } from 'material-ui/colors';
 // i.e. separate the drawer, app bar, etc...
 
 const drawerWidth = 260;
-const primary = grey[900]; // #F44336
 const accent = grey[50]; // #F44336
 
 const styles = theme => ({
@@ -48,17 +47,20 @@ const styles = theme => ({
     height: '100%',
   },
   appBar: {
-  	background: primary,
-    position: 'absolute',
+  	background: accent,
+    position: 'fixed',
     marginLeft: drawerWidth,
     [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
   search: {
-    'backgroundColor': primary,
-    'color': accent,
+    // 'backgroundColor': primary,
+    // 'color': accent,
     'marginLeft': 20,
+  },
+  accentIcon: {
+    'fill': grey[800],
   },
   navIconHide: {
     [theme.breakpoints.up('md')]: {
@@ -66,6 +68,8 @@ const styles = theme => ({
     },
   },
   drawerHeader: {
+    background: accent,
+    // color: accent,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -111,10 +115,11 @@ class ResponsiveDrawer extends React.Component {
     const drawer = (
 		<div>
 		<div className={classes.drawerHeader}>
-    <Typography>CLUBS: Find great yoga teachers</Typography>
+    <Typography color="primary">Yoga Teachers Repository</Typography>
     </div>
     <Divider />
 			<List> {/* Refactor this out */}
+
 				<ListItem button>
 					<ListItemIcon>
 					<InboxIcon />
@@ -133,14 +138,14 @@ class ResponsiveDrawer extends React.Component {
           <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="Sign Up" />
+        <ListItemText primary="About" />
         </ListItem>
 
         <ListItem button>
           <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="About" />
+        <ListItemText primary="Register" />
         </ListItem>
 
         <ListItem button>
@@ -164,11 +169,13 @@ class ResponsiveDrawer extends React.Component {
                 aria-label="open drawer"
                 onClick={this.handleDrawerToggle}
                 className={classes.navIconHide}>
-                <KeyboardArrowRightIcon />
+                <MenuIcon 
+                  className={classes.accentIcon}
+                />
               </IconButton>
               <Input 
                 placeholder="City"
-                inputStyle={'textAlign:center'}
+                // inputStyle={'textAlign:center'}
                 className={classes.search}/>
 
               <Input 
@@ -178,6 +185,16 @@ class ResponsiveDrawer extends React.Component {
               <Input 
                 placeholder="Style"
                 className={classes.search}/>
+
+              <IconButton
+                color="contrast"
+                aria-label="open drawer"
+                onClick={this.handleDrawerToggle}
+                >
+              <SearchIcon 
+                className={classes.accentIcon}
+              />
+              </IconButton>
 
             </Toolbar>
           </AppBar>

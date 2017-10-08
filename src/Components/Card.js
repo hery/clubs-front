@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import GradeIcon from 'material-ui-icons/Grade'
 
 
 const styles = theme => ({
@@ -13,15 +14,16 @@ const styles = theme => ({
     display:'flex',
     justifyContent: 'space-between',
   },
+  cardCover: {
+  	width:'100%',
+  	marginBottom:20,
+  	marginLeft:10,
+  	display:'flex',
+  },
   detail: {
   	display:'flex',
   	flexDirection:'column',
     justifyContent: 'space-between',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
   },
   title: {
     marginBottom: 16,
@@ -33,47 +35,63 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
   },
   cover: {
-    minWidth: 220,
-    minHeight: 220,
+    minWidth: 'calc(100%)',
   },
+  row: {
+  	display: 'flex',
+  	justifyContent: 'space-between',
+  }
 });
 
 
 function SimpleCard(props) {
-  const classes = props.classes;
-  const bull = <span className={classes.bullet}>•</span>;
+	const classes = props.classes;
 
-  return (
-    <div>
-      <Card className={classes.card}>
-      	<div className="details">
-        <CardContent>
-          <Typography type="body1" className={classes.title}>
-            Word of the Day
-          </Typography>
-          <Typography type="headline" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography type="body1" className={classes.pos}>
-            adjective
-          </Typography>
-          <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button dense>Learn More</Button>
-        </CardActions>
-        </div>
-        <CardMedia
-          className={classes.cover}
-          image="https://i.pinimg.com/736x/5c/8a/08/5c8a087338ab2385123966b82f4937a8--tara-stiles-yoga-yoga-bodies.jpg"
-          title="Live from space album cover"
-        />
-      </Card>
-    </div>
-  );
+	return (
+		<div className={classes.row}> 
+			<Card className={classes.card}>
+			<div className="details">
+				<CardContent>         
+					<Typography type="headline" component="h2"> Tara Stiles </Typography>
+					<Typography type="body1" className={classes.pos}> New York City, NY </Typography>
+					<Typography type="body1" className={classes.title}>
+						<GradeIcon />
+						<GradeIcon />
+						<GradeIcon />
+						<GradeIcon />
+						<GradeIcon />
+						<Typography className={classes.pos}>432 ratings</Typography>
+					</Typography> 
+					<Typography component="p">
+						well meaning and kindly.<br />
+						{'"a benevolent smile"'}
+					</Typography>
+				</CardContent>
+				<CardActions>
+					<Button dense>Learn More</Button>
+				</CardActions>
+			</div>
+		</Card>
+		<Card className={classes.cardCover}>
+			<CardMedia
+				className={classes.cover}
+				image="https://i.pinimg.com/736x/5c/8a/08/5c8a087338ab2385123966b82f4937a8--tara-stiles-yoga-yoga-bodies.jpg"
+				title="Live from space album cover"/>
+		</Card>
+		<Card className={classes.cardCover}>
+			<CardMedia
+				className={classes.cover}
+				image="https://mindbodygreen-res.cloudinary.com/images/c_scale,w_770,q_80,f_auto,fl_lossy/crp/newtarastiles2016_coloraddition-828x492/10-minute-yoga-sequence-revive-energy.jpg"
+				title="Live from space album cover"/>
+		</Card>
+		<Card className={classes.cardCover}>
+			<CardMedia
+				className={classes.cover}
+				image="http://d30i07b9wlivv4.cloudfront.net/uploads/2016/03/25183442/fit-tip1.jpg"
+				title="Live from space album cover"/>
+		</Card>
+		</div>
+	);
 }
 
 SimpleCard.propTypes = {
