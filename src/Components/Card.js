@@ -43,28 +43,24 @@ const styles = theme => ({
   }
 });
 
-
 function SimpleCard(props) {
 	const classes = props.classes;
-
 	return (
-		<div className={classes.row}> 
+		<div className={classes.row}>  
 			<Card className={classes.card}>
 			<div className="details">
 				<CardContent>         
-					<Typography type="headline" component="h2"> Tara Stiles </Typography>
-					<Typography type="body1" className={classes.pos}> New York City, NY </Typography>
-					<Typography type="body1" className={classes.title}>
+					<Typography type="headline" component="h2">{props.user.name}</Typography>
+					<Typography type="body1" className={classes.pos}>{props.user.city}</Typography>
+						{/* TODO: Plug in ratings*/}
 						<GradeIcon />
 						<GradeIcon />
 						<GradeIcon />
 						<GradeIcon />
 						<GradeIcon />
 						<Typography className={classes.pos}>432 ratings</Typography>
-					</Typography> 
 					<Typography component="p">
-						well meaning and kindly.<br />
-						{'"a benevolent smile"'}
+						{props.user.description}
 					</Typography>
 				</CardContent>
 				<CardActions>
@@ -72,6 +68,7 @@ function SimpleCard(props) {
 				</CardActions>
 			</div>
 		</Card>
+		{/* TODO: Plug in images*/}
 		<Card className={classes.cardCover}>
 			<CardMedia
 				className={classes.cover}

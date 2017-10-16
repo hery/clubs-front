@@ -5,8 +5,8 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
-import SimpleCard from './Card';
 import Chips from './Chip';
+import UsersList from '../container/UsersList'
 
 import Toolbar from 'material-ui/Toolbar';
 import Input from 'material-ui/Input';
@@ -138,14 +138,14 @@ class ResponsiveDrawer extends React.Component {
           <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="About" />
+        <ListItemText primary="My Account" />
         </ListItem>
 
         <ListItem button>
           <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="Register" />
+        <ListItemText primary="About" />
         </ListItem>
 
         <ListItem button>
@@ -174,6 +174,7 @@ class ResponsiveDrawer extends React.Component {
                 />
               </IconButton>
               <Input 
+                onChange={function(event){console.log(this.text)}}
                 placeholder="City"
                 // inputStyle={'textAlign:center'}
                 className={classes.search}/>
@@ -224,10 +225,7 @@ class ResponsiveDrawer extends React.Component {
           </Hidden>
           <main className={classes.content}>
             <Chips />
-            <SimpleCard />
-            <SimpleCard />
-            <SimpleCard />
-            <SimpleCard />
+            <UsersList />
           </main>
         </div>
       </div>
