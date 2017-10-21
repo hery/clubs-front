@@ -9,18 +9,11 @@ import SimpleCard from './Card'
 function Cards(props) {
 	const users = props.users
 	const elements = []
-	console.log(users);
 	for (var i=0; i<users.length; i++) {
 		const user = users[i]
-		console.log(user);
-		console.log(user.name);
-		elements.push(<SimpleCard user={user}/>)
+		elements.push(<SimpleCard key={i} user={user}/>)
 	}
 	return (elements);
 }
-
-SimpleCard.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default Cards;

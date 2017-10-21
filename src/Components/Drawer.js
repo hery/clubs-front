@@ -88,6 +88,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     width: '100%',
     padding: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing.unit,
     height: 'calc(100% - 56px)',
     marginTop: 56,
     [theme.breakpoints.up('md')]: {
@@ -101,6 +102,7 @@ const styles = theme => ({
 });
 
 class ResponsiveDrawer extends React.Component {
+
   state = {
     mobileOpen: false,
   };
@@ -110,6 +112,7 @@ class ResponsiveDrawer extends React.Component {
   };
 
   render() {
+
     const { classes } = this.props;
 
     const drawer = (
@@ -174,9 +177,8 @@ class ResponsiveDrawer extends React.Component {
                 />
               </IconButton>
               <Input 
-                onChange={function(event){console.log(this.text)}}
+                onChange={ this.props.setCityFilter }
                 placeholder="City"
-                // inputStyle={'textAlign:center'}
                 className={classes.search}/>
 
               <Input 
