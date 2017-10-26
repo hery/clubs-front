@@ -7,6 +7,7 @@ const CITY_PARIS = "Paris"
 
 export const FILTER_CITY_NEW_YORK_CITY = CITY_NEW_YORK_CITY
 export const FILTER_CITY_PARIS = CITY_PARIS
+export const FILTER_FEATURED = "Featured"
 
 
 const getUsersFromCityFilter = (users, filter) => {
@@ -15,8 +16,10 @@ const getUsersFromCityFilter = (users, filter) => {
 			return users.filter(user => user.city === CITY_NEW_YORK_CITY)
 		case FILTER_CITY_PARIS:
 			return users.filter(user => user.city === CITY_PARIS)
+		case FILTER_FEATURED:
+			return users.filter(user => user.featured === true)
 		default:
-			return users
+			return users.filter(user => user.featured === true)
 	}
 }
 

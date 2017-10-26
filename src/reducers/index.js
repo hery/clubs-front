@@ -1,6 +1,7 @@
 
 import { GET_USERS, SET_FILTER } from '../actions'
-import { FILTER_CITY_NEW_YORK_CITY } from '../container/UsersList'
+import { FILTER_FEATURED } from '../container/UsersList'
+
 
 const initialUsers = [
 	{
@@ -10,7 +11,8 @@ const initialUsers = [
 	    style: "Vinyasa",
 	    rating: 5,
 	    ratingsNumber: 432,
-	    description: "well meaning and kindly"
+	    description: "well meaning and kindly",
+	    featured: false,
     },
 	{
 		id: 1,
@@ -19,22 +21,24 @@ const initialUsers = [
 	    style: "Vinyasa",
 	    rating: 5,
 	    ratingsNumber: 4123,
-	    description: "all levels welcome"
+	    description: "all levels welcome",
+	    featured: true,
    },
 	{
 		id: 2,
 	    name: "Melinda Abbott",
-	    city: "Paris",
+	    city: "New York City",
 	    style: "Vinyasa",
 	    rating: 5,
 	    ratingsNumber: 4123,
-	    description: "athletic work out"
+	    description: "athletic work out",
+	    featured: true,
    },
 ]
 
 const initialState = {
 	users: initialUsers,
-	cityFilter: FILTER_CITY_NEW_YORK_CITY,
+	cityFilter: FILTER_FEATURED,
 }
 
 

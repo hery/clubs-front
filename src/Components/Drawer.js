@@ -189,16 +189,6 @@ class ResponsiveDrawer extends React.Component {
                 placeholder="Style"
                 className={classes.search}/>
 
-              <IconButton
-                color="contrast"
-                aria-label="open drawer"
-                onClick={this.handleDrawerToggle}
-                >
-              <SearchIcon 
-                className={classes.accentIcon}
-              />
-              </IconButton>
-
             </Toolbar>
           </AppBar>
           <Hidden mdUp>
