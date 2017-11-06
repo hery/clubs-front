@@ -5,24 +5,25 @@ import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
-import Chips from './Chip';
-import UsersList from '../container/UsersList'
 
 import Toolbar from 'material-ui/Toolbar';
 import Input from 'material-ui/Input';
 
 import List from 'material-ui/List';
 
+import About from './About'
+import Results from './Results'
+
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import MenuIcon from 'material-ui-icons/Menu';
-import SearchIcon from 'material-ui-icons/Search'
 
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
+
+import { Route, Link } from 'react-router-dom'
 
 import { grey } from 'material-ui/colors';
 
@@ -118,49 +119,35 @@ class ResponsiveDrawer extends React.Component {
     const drawer = (
 		<div>
 		<div className={classes.drawerHeader}>
-    <Typography color="primary">Yoga Teachers Repository</Typography>
+      <Link to="/"><Typography color="primary">Yoga Teachers Repository</Typography></Link>
     </div>
     <Divider />
 			<List> {/* Refactor this out */}
 
-				<ListItem button>
-					<ListItemIcon>
-					<InboxIcon />
-				</ListItemIcon>
-				<ListItemText primary="Featured Teachers" />
-				</ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="New Teachers" />
-        </ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="My Account" />
-        </ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="About" />
-        </ListItem>
-
-        <ListItem button>
-          <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary="FAQ" />
-        </ListItem>
+        <Link to="/about">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
+        </Link>
 
 			</List>
 		</div>
     );
+
+    const routes = [
+      {
+        path: '/',
+        exact: true,
+        component: () => <Results />
+      },
+      { 
+        path: '/about',
+        component: () => <About />
+      },
+    ]
 
     return (
       <div className={classes.root}>
@@ -216,8 +203,10 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
           <main className={classes.content}>
-            <Chips />
-            <UsersList />
+
+              <Route path='/' exact={true} component={Results}/>
+              <Route path='/about'component={About}/>
+
           </main>
         </div>
       </div>

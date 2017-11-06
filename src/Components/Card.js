@@ -50,7 +50,7 @@ function SimpleCard(props) {
 			<Card className={classes.card}>
 			<div className="details">
 				<CardContent>         
-					<Typography type="headline" component="h2">{props.user.name}</Typography>
+					<Typography type="headline" component="h2">{props.user.user.first_name}</Typography>
 					<Typography type="body1" className={classes.pos}>{props.user.city}</Typography>
 						{/* TODO: Plug in ratings*/}
 						<GradeIcon />
