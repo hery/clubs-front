@@ -13,6 +13,7 @@ import List from 'material-ui/List';
 
 import About from './About'
 import Results from './Results'
+import SignIn from  '../container/SignIn'
 
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
@@ -124,6 +125,24 @@ class ResponsiveDrawer extends React.Component {
     <Divider />
 			<List> {/* Refactor this out */}
 
+        <Link to="/">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            <ListItemText primary="Teachers" />
+          </ListItem>
+        </Link>
+
+        <Link to="/#">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            <ListItemText primary="Map" />
+          </ListItem>
+        </Link>
+
         <Link to="/about">
           <ListItem button>
             <ListItemIcon>
@@ -133,21 +152,18 @@ class ResponsiveDrawer extends React.Component {
           </ListItem>
         </Link>
 
+        <Link to="/signin">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            <ListItemText primary="Sign In" />
+          </ListItem>
+        </Link>
+
 			</List>
 		</div>
     );
-
-    const routes = [
-      {
-        path: '/',
-        exact: true,
-        component: () => <Results />
-      },
-      { 
-        path: '/about',
-        component: () => <About />
-      },
-    ]
 
     return (
       <div className={classes.root}>
@@ -206,6 +222,7 @@ class ResponsiveDrawer extends React.Component {
 
               <Route path='/' exact={true} component={Results}/>
               <Route path='/about'component={About}/>
+              <Route path='/signin'component={SignIn}/>
 
           </main>
         </div>

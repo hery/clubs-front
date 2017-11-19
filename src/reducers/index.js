@@ -1,8 +1,17 @@
 
-import { REQUEST_USERS,
-		 RECEIVE_USERS,
-		 FETCH_USERS,
-		 SET_FILTER } from '../actions'
+import {
+	SET_USERNAME,
+	SET_PASSWORD,
+
+	REQUEST_LOGIN,
+	RECEIVE_LOGIN,
+	// ERROR_LOGIN,
+
+	REQUEST_USERS,
+	RECEIVE_USERS,
+	FETCH_USERS,
+
+	SET_FILTER, } from '../actions'
 import { FILTER_FEATURED } from '../container/UsersList'
 
 
@@ -18,6 +27,22 @@ const initialState = {
 
 function clubsApp(state = initialState, action) {
 	switch (action.type) {
+		case SET_USERNAME:
+			return Object.assign({}, state, {
+				username: action.username,
+			})
+		case SET_PASSWORD:
+			return Object.assign({}, state, {
+				password: action.password,
+			})	
+		case REQUEST_LOGIN:
+			return state
+		case RECEIVE_LOGIN:
+			return Object.assign({}, state, {
+				users: state.users,
+				cityFilter: state.cityFilter,
+				token: action.token
+			})
 		case REQUEST_USERS:
 			return state
 		case RECEIVE_USERS:
