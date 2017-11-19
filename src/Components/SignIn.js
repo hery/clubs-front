@@ -5,6 +5,7 @@ import Send from 'material-ui-icons/Send';
 import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 
+import { login } from '../actions'
 
 const styles = theme => ({
   container: {
@@ -31,6 +32,16 @@ const styles = theme => ({
 
 class SignInForm extends React.Component {
 
+    constructor(props) {
+	    super(props)
+	    this.logIn = this.logIn.bind(this);
+    }
+
+	logIn() {
+		const { dispatch, username, password } = this.props
+		dispatch(login(username, password))
+	}
+
     render () {
     	const { classes } = this.props;
 
@@ -55,7 +66,10 @@ class SignInForm extends React.Component {
 					margin="normal"
 				/>
 
-		        <Button className={classes.button} raised color="primary">
+		        <Button
+		        	className={classes.button}
+		        	raised color="primary"
+		        	onClick={this.logIn}>
 					Send
 					<Send className={classes.rightIcon} />
 		        </Button>
@@ -66,6 +80,7 @@ class SignInForm extends React.Component {
 
 SignInForm.propTypes = {
 	classes: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
 }
 
 export default withStyles(styles)(SignInForm);

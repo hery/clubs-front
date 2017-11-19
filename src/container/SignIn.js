@@ -1,24 +1,27 @@
 
 import { connect } from 'react-redux'
 import SignInForm from '../components/SignIn'
-import { login, setUsername, setPassword } from '../actions'
+import { 
+    setUsername,
+    setPassword } from '../actions'
 
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    username: state.username,
+    password: state.password,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (username, password) => {
-        dispatch(login(username, password))
-    },
     handleUsernameChange: event => {
         dispatch(setUsername(event.target.value))
     },
     handlePasswordChange: event => {
         dispatch(setPassword(event.target.value))
     },
+    dispatch: dispatch,
   }
 }
 

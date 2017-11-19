@@ -1,11 +1,10 @@
-
+	
 import {
 	SET_USERNAME,
 	SET_PASSWORD,
 
 	REQUEST_LOGIN,
 	RECEIVE_LOGIN,
-	// ERROR_LOGIN,
 
 	REQUEST_USERS,
 	RECEIVE_USERS,
@@ -23,7 +22,6 @@ const initialState = {
 
 // Root Reducer
 // state + action => state
-
 
 function clubsApp(state = initialState, action) {
 	switch (action.type) {

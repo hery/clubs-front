@@ -6,7 +6,6 @@ export const SET_PASSWORD = 'SET_PASSWORD'
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN'
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
-// export const ERROR_LOGIN = 'ERROR_LOGIN'
 
 export const REQUEST_USERS = 'REQUEST_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
@@ -32,13 +31,8 @@ export function receiveLogin(json) {
 	}
 }
 
-// export function errorLogin() {
-// 	return {
-// 		type: ERROR_LOGIN,
-// 	}
-// }
-
 export function login(username, password) {
+	console.log("logging in " + username + ' ' + password)
 	return function (dispatch) {
 		dispatch(requestLogin())
 		return fetch('http://localhost:8000/api/auth/token')
@@ -66,7 +60,6 @@ export function setPassword(password) {
 		password,
 	}
 }
-
 
 // Users - should be teachers
 
@@ -98,7 +91,6 @@ export function fetchUsers() {
 
 	}
 }
-
 
 // Filters
 
