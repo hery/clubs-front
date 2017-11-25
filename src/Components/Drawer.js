@@ -174,11 +174,9 @@ class ResponsiveDrawer extends React.Component {
                 onChange={ this.props.setCityFilter }
                 placeholder="City"
                 className={classes.search}/>
-
               <Input 
                 placeholder="Teacher"
                 className={classes.search}/>
-
               <Input 
                 placeholder="Style"
                 className={classes.search}/>
@@ -210,11 +208,9 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
           <main className={classes.content}>
-
               <Route path='/' exact={true} component={Results}/>
               <Route path='/about'component={About}/>
               <Route path='/signin'component={SignIn}/>
-
           </main>
         </div>
       </div>

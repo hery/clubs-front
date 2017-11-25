@@ -37,9 +37,7 @@ function clubsApp(state = initialState, action) {
 			return state
 		case RECEIVE_LOGIN:
 			return Object.assign({}, state, {
-				users: state.users,
-				cityFilter: state.cityFilter,
-				token: action.token
+				token: action.token.token
 			})
 		case REQUEST_USERS:
 			return state
@@ -51,7 +49,6 @@ function clubsApp(state = initialState, action) {
 			return state
 		case SET_FILTER:
 			return Object.assign({}, state, {
-				users: state.users,
 				cityFilter: action.filter
 			})
 		default:

@@ -45,9 +45,8 @@ class SignInForm extends React.Component {
     render () {
     	const { classes } = this.props;
 
-        return(
+        return (
 			<form className={classes.container} noValidate autoComplete="off">
-
 				<TextField
 					id="username"
 					label="Username"
@@ -56,16 +55,15 @@ class SignInForm extends React.Component {
 					onChange={this.props.handleUsernameChange}
 					margin="normal"
 				/>
-
 				<TextField
 					id="password"
 					label="Password"
+					type="password"
 					className={classes.textField}
 					placeholder="Password"
 					onChange={this.props.handlePasswordChange}
 					margin="normal"
 				/>
-
 		        <Button
 		        	className={classes.button}
 		        	raised color="primary"
