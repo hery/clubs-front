@@ -14,7 +14,6 @@ export const FETCH_USERS = 'FETCH_USERS'
 export const SET_FILTER = 'SET_FILTER'
 
 
-
 // Auth
 
 export function requestLogin() {
@@ -50,10 +49,30 @@ export function login(username, password) {
         return fetch('http://localhost:8000/api/auth/token', options)
         .then(
             response => response.json(),
-            error => console.log("An error occured. ", error)
+            error => console.log("An error occured requesting token... %s", error)
         )
         .then(
-            json => dispatch(receiveLogin(json))
+            json => dispatch(receiveLogin(json)),
+            error => console.log("An error occured handling token... %s", error)
+        )
+        .then(
+            json => dispatch(requestUser(username)),
+            error => console.log("Error dispatching receiveLogin")
+        )
+    }
+}
+
+export function requestUser(username) {
+    // TODO: Dispatch appropriate state update actions
+    var url = "http://localhost:8000/api/user/" + username + "/?format=json"
+    return function(dispatch) {
+        return fetch(url)
+        .then(
+            response => response.json(),
+            error => console.log("An error occured fetching user %s", username)
+        )
+        .then(
+            json => console.log(json),
         )
     }
 }

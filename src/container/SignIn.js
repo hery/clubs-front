@@ -10,6 +10,7 @@ const mapStateToProps = state => {
   return {
     username: state.username,
     password: state.password,
+    loggedIn: state.token != null,
   }
 }
 

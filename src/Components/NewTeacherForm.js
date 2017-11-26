@@ -9,8 +9,8 @@ import { login } from '../actions'
 
 const styles = theme => ({
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    // display: 'flex',
+    // flexWrap: 'wrap',
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -30,7 +30,7 @@ const styles = theme => ({
 });
 
 
-class SignInForm extends React.Component {
+class NewTeacherForm extends React.Component {
 
     constructor(props) {
 	    super(props)
@@ -59,22 +59,35 @@ class SignInForm extends React.Component {
 	        return (
 				<form className={classes.container} noValidate autoComplete="off">
 					<TextField
-						id="username"
-						label="Username"
+						id="name"
+						value="Melinda Abbott"
+						label="name"
 						className={classes.textField}
-						placeholder="Username"
-						onChange={this.props.handleUsernameChange}
 						margin="normal"
-					/>
+					/><br />
 					<TextField
-						id="password"
-						label="Password"
-						type="password"
+						id="city"
+						label="City"
 						className={classes.textField}
-						placeholder="Password"
+						placeholder="City"
+						margin="normal"
+					/><br />
+					<TextField
+						id="style"
+						label="Style"
+						className={classes.textField}
+						placeholder="Style"
 						onChange={this.props.handlePasswordChange}
 						margin="normal"
-					/>
+					/><br />
+					<TextField
+						id="description"
+						label="description"
+						className={classes.textField}
+						placeholder="description"
+						onChange={this.props.handlePasswordChange}
+						margin="normal"
+					/>			
 			        <Button
 			        	className={classes.button}
 			        	raised color="primary"
@@ -88,9 +101,9 @@ class SignInForm extends React.Component {
     }
 }
 
-SignInForm.propTypes = {
+NewTeacherForm.propTypes = {
 	classes: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    // dispatch: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(SignInForm);
+export default withStyles(styles)(NewTeacherForm);

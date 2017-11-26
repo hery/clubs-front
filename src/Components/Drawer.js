@@ -14,6 +14,7 @@ import List from 'material-ui/List';
 import About from './About'
 import Results from './Results'
 import SignIn from  '../container/SignIn'
+import NewTeacherForm from './NewTeacherForm'
 
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
@@ -134,6 +135,15 @@ class ResponsiveDrawer extends React.Component {
           </ListItem>
         </Link>
 
+        <Link to="/teacher/new">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            <ListItemText primary="Add Teacher" />
+          </ListItem>
+        </Link>
+
         <Link to="/about">
           <ListItem button>
             <ListItemIcon>
@@ -209,6 +219,7 @@ class ResponsiveDrawer extends React.Component {
           </Hidden>
           <main className={classes.content}>
               <Route path='/' exact={true} component={Results}/>
+              <Route path='/teacher/new' component={NewTeacherForm}/>
               <Route path='/about'component={About}/>
               <Route path='/signin'component={SignIn}/>
           </main>
