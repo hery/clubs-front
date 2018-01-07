@@ -78,7 +78,7 @@ function SimpleCard(props) {
 		<Card className={classes.cardCover}>
 			<CardMedia
 				className={classes.cover}
-				image="https://mindbodygreen-res.cloudinary.com/images/c_scale,w_770,q_80,f_auto,fl_lossy/crp/newtarastiles2016_coloraddition-828x492/10-minute-yoga-sequence-revive-energy.jpg"
+				image="https://static1.squarespace.com/static/53c33c19e4b0a643a8ffb7bd/t/558c318be4b0c191317a0659/1435251088410/?format=750w"
 				title="Live from space album cover"/>
 		</Card>
 		<Card className={classes.cardCover}>

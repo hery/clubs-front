@@ -131,7 +131,7 @@ class ResponsiveDrawer extends React.Component {
             <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-            <ListItemText primary="Teachers" />
+            <ListItemText primary="Top Entities" />
           </ListItem>
         </Link>
 
@@ -140,7 +140,8 @@ class ResponsiveDrawer extends React.Component {
             <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-            <ListItemText primary="Add Teacher" />
+          {/* Should be "Invite Entity" for signed up entities */}
+          <ListItemText primary="Sign Up As Entity" />
           </ListItem>
         </Link>
 
@@ -158,7 +159,18 @@ class ResponsiveDrawer extends React.Component {
             <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
+            {/* Should be "Signed off" for signed in entities */}
             <ListItemText primary="Sign In" />
+          </ListItem>
+        </Link>
+
+        <Link to="/signin">
+          <ListItem button>
+            <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+            {/* TODO */}
+            <ListItemText primary="Sign Up" />
           </ListItem>
         </Link>
 
@@ -185,12 +197,9 @@ class ResponsiveDrawer extends React.Component {
                 placeholder="City"
                 className={classes.search}/>
               <Input 
+                onChange={ this.props.setTeacherFilter }
                 placeholder="Teacher"
                 className={classes.search}/>
-              <Input 
-                placeholder="Style"
-                className={classes.search}/>
-
             </Toolbar>
           </AppBar>
           <Hidden mdUp>
@@ -210,10 +219,7 @@ class ResponsiveDrawer extends React.Component {
             <Drawer
               type="permanent"
               open
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
+              classes={{ paper: classes.drawerPaper,}}>
               {drawer}
             </Drawer>
           </Hidden>

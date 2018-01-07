@@ -1,6 +1,9 @@
 import ResponsiveDrawer from '../components/Drawer'
 import { connect } from 'react-redux'
-import { setFilter } from '../actions'
+import { setCityFilter,
+         setTeacherFilter,
+         setStyleFilter
+   } from '../actions'
 
 
 const mapStateToProps = state => {
@@ -12,7 +15,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setCityFilter: event => {
-    	dispatch(setFilter(event.target.value))
+    	dispatch(setCityFilter(event.target.value))
+    },
+    setTeacherFilter: event => {
+    	dispatch(setTeacherFilter(event.target.value))
+    },
+    setStyleFilter: event => {
+    	dispatch(setStyleFilter(event.target.value))
     }
   }
 }

@@ -44,6 +44,12 @@ function Chips(props) {
       />
 
       <Chip
+        label="Remote"
+        onRequestDelete={handleRequestDelete}
+        className={classes.chip}
+      />
+
+      <Chip
         label="Vinyasa Yoga"
         onRequestDelete={handleRequestDelete}
         className={classes.chip}

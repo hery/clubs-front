@@ -11,8 +11,13 @@ export const REQUEST_USERS = 'REQUEST_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const FETCH_USERS = 'FETCH_USERS'
 
-export const SET_FILTER = 'SET_FILTER'
+export const SET_CITY_FILTER = 'SET_CITY_FILTER'
+export const SET_TEACHER_FILTER = 'SET_TEACHER_FILTER'
+export const SET_STYLE_FILTER = 'SET_STYLE_FILTER'
 
+export const FILTER_TYPE_CITY = 'CITY'
+export const FILTER_TYPE_TEACHER = 'TEACHER'
+export const FILTER_TYPE_STYLE = 'STYLE'
 
 // Auth
 
@@ -125,9 +130,26 @@ export function fetchUsers() {
 
 // Filters
 
-export function setFilter(filter) {
+export function setCityFilter(filter) {
     return {
-        type: SET_FILTER,
+        type: SET_CITY_FILTER,
+        filter_type: FILTER_TYPE_CITY,
+        filter
+    }
+}
+
+export function setTeacherFilter(filter) {
+    return {
+        type: SET_TEACHER_FILTER,
+        filter_type: FILTER_TYPE_TEACHER,
+        filter
+    }
+}
+
+export function setStyleFilter(filter) {
+    return {
+        type: SET_STYLE_FILTER,
+        filter_type: FILTER_TYPE_STYLE,
         filter
     }
 }

@@ -5,6 +5,10 @@ import UsersList from '../container/UsersList'
 
 
 class Results extends React.Component {
+
+    componentDidMount() {
+        console.log(this.props)
+    }
     render () {
         return (
         	<div>

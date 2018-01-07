@@ -2,50 +2,43 @@
 import { connect } from 'react-redux'
 import Cards from '../components/Cards'
 
-const CITY_NEW_YORK_CITY = "New York City"
-const CITY_PARIS = "Paris"
-const CITY_REMIREMONT = "Remiremont"
-const CITY_LONDON = "London"
-const CITY_SEATTLE = "Seattle"
+export const FILTER_FEATURED = "featured"
 
-export const FILTER_CITY_NEW_YORK_CITY = CITY_NEW_YORK_CITY
-export const FILTER_CITY_PARIS = CITY_PARIS
-export const FILTER_CITY_REMIREMONT = CITY_REMIREMONT
-export const FILTER_CITY_LONDON = CITY_LONDON
-export const FILTER_CITY_SEATTLE = CITY_SEATTLE
-export const FILTER_FEATURED = "Featured"
-
-
-const getUsersFromCityFilter = (users, filter) => {
-    switch (filter) {
-        case FILTER_CITY_NEW_YORK_CITY:
-            return users.filter(user => user.city === CITY_NEW_YORK_CITY)
-        case FILTER_CITY_PARIS:
-            return users.filter(user => user.city === CITY_PARIS)
-        case FILTER_CITY_REMIREMONT:
-            return users.filter(user => user.city === CITY_REMIREMONT)
-        case FILTER_CITY_LONDON:
-            return users.filter(user => user.city === CITY_LONDON)
-        case FILTER_CITY_SEATTLE:
-            return users.filter(user => user.city === CITY_SEATTLE)
-        case FILTER_FEATURED:
-            return users.filter(user => user.featured === true)
-        default:
-            return users.filter(user => user.featured === true)
-    }
+const getUsersFromCityFilter = (users, cityFilter) => {
+    return users.filter(user => user.city === cityFilter)
 }
 
+const getUsersFromTeacherFilter = (users, teacherFilter) => {
+    return users.filter(user => user.user.first_name === teacherFilter ||
+        user.user.last_name === teacherFilter ||
+        user.user.first_name + ' ' + user.user.last_name === teacherFilter
+    )
+}
+
+const getUsersFromFilter = (users, 
+                            cityFilter,
+                            teacherFilter) => {
+    if (!cityFilter && !teacherFilter) {
+        return users
+    }
+    // TODO: Check if this is slow
+    let resultArray = getUsersFromCityFilter(users, cityFilter)
+        .concat(getUsersFromTeacherFilter(users, teacherFilter))
+    let resultSet = new Set(resultArray)
+    return Array.from(resultSet)
+}
 
 const mapStateToProps = state => {
   return {
-    users: getUsersFromCityFilter(state.users, state.cityFilter)
+    users: getUsersFromFilter(
+        state.users,
+        state.cityFilter,
+        state.teacherFilter)
   }
 }
-
 
 const UsersList = connect(
     mapStateToProps,
 )(Cards)
-
 
 export default UsersList

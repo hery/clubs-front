@@ -39,6 +39,7 @@ class SignInForm extends React.Component {
 
 	logIn() {
 		const { dispatch, username, password } = this.props
+		console.log("Logging in %s/%s", username, password)
 		dispatch(login(username, password))
 	}
 
@@ -61,6 +62,7 @@ class SignInForm extends React.Component {
 					<TextField
 						id="username"
 						label="Username"
+						value={this.props.username}
 						className={classes.textField}
 						placeholder="Username"
 						onChange={this.props.handleUsernameChange}
@@ -69,6 +71,7 @@ class SignInForm extends React.Component {
 					<TextField
 						id="password"
 						label="Password"
+						value={this.props.password}
 						type="password"
 						className={classes.textField}
 						placeholder="Password"
